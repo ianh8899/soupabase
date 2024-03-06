@@ -1,0 +1,26 @@
+name = "cloud-app"
+compatibility_date = "2023-12-01"
+
+[vars]
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ranJ4ZWF4cWVnZGNnZHdibmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg5NTczODEsImV4cCI6MjAyNDUzMzM4MX0.cufNLknORu7fNx8fnTZpuExK_h73b5FGjspGeiEI74w"
+SUPABASE_URL = "https://nkjrxeaxqegdcgdwbnbd.supabase.co"
+# MY_VARIABLE = "production_value"
+
+# [[kv_namespaces]]
+# binding = "MY_KV_NAMESPACE"
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# [[r2_buckets]]
+# binding = "MY_BUCKET"
+# bucket_name = "my-bucket"
+
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "my-database"
+# database_id = ""
+
+[env.dev]
+name = "my-worker-dev"
+vars = { SUPABASE_URL = "https://nkjrxeaxqegdcgdwbnbd.supabase.co", SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ranJ4ZWF4cWVnZGNnZHdibmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg5NTczODEsImV4cCI6MjAyNDUzMzM4MX0.cufNLknORu7fNx8fnTZpuExK_h73b5FGjspGeiEI74w" }
+bindings = { SUPABASE_URL = "https://nkjrxeaxqegdcgdwbnbd.supabase.co", SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ranJ4ZWF4cWVnZGNnZHdibmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg5NTczODEsImV4cCI6MjAyNDUzMzM4MX0.cufNLknORu7fNx8fnTZpuExK_h73b5FGjspGeiEI74w" }
+main = "src/index.ts"
