@@ -3,7 +3,7 @@ export default function DocExamples() {
         <section>
             <div class="mt-10">
                 <h3 class="text-lg font-bold py-4">Fetch all soups (GET)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-scroll'>
+                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto'>
                 {`fetch('https://cloud-app.soupabase.workers.dev/soup')
     .then(res => res.json())
     .then(json => console.log(json))`}
@@ -13,11 +13,11 @@ export default function DocExamples() {
                 hx-swap="innerHTML"
                 hx-target="#all-soup"
                 >Get response</button>
-                <code id="all-soup" class="block whitespace-pre-wrap max-h-48 overflow-scroll p-8"></code>
+                <code id="all-soup" class="block whitespace-pre-wrap max-h-48 overflow-auto p-8"></code>
             </div>
             <div class="mt-8">
                 <h3 class="text-lg font-bold py-4">Fetch all soups with a limit parameter (GET)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-scroll'>
+                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto'>
                 {`fetch('https://cloud-app.soupabase.workers.dev/soup?limit=2')
     .then(res => res.json())
     .then(json => console.log(json))`}
@@ -27,11 +27,11 @@ export default function DocExamples() {
                 hx-swap="innerHTML"
                 hx-target="#limit-soup"
                 >Get response</button>
-                <code id="limit-soup" class="block whitespace-pre-wrap max-h-48 overflow-scroll p-8"></code>
+                <code id="limit-soup" class="block whitespace-pre-wrap max-h-48 overflow-auto p-8"></code>
             </div>
             <div class="mt-8">
                 <h3 class="text-lg font-bold py-4">Fetch soup by Id (GET)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-scroll'>
+                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto'>
                 {`fetch('https://cloud-app.soupabase.workers.dev/soup/1')
     .then(res => res.json())
     .then(json => console.log(json))`}
@@ -41,11 +41,11 @@ export default function DocExamples() {
                 hx-swap="innerHTML"
                 hx-target="#one-soup"
                 >Get response</button>
-                <code id="one-soup" class="block whitespace-pre-wrap max-h-48 overflow-scroll p-8"></code>
+                <code id="one-soup" class="block whitespace-pre-wrap max-h-48 overflow-auto p-8"></code>
             </div>
             <div class="mt-8">
                 <h3 class="text-lg font-bold py-4">Create a Soup (POST)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-scroll'>
+                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto'>
                 {`fetch('https://cloud-app.soupabase.workers.dev/soup', {
     method: 'POST',
     headers: {
@@ -74,7 +74,7 @@ export default function DocExamples() {
             </div>
             <div class="mt-8">
                 <h3 class="text-lg font-bold py-4">Update a Soup (PATCH)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-scroll'>
+                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto'>
   {`fetch('https://cloud-app.soupabase.workers.dev/soup/1', {
     method: 'PATCH',
     headers: {
@@ -105,7 +105,7 @@ export default function DocExamples() {
             </div>
             <div class="mt-8">
                 <h3 class="text-lg font-bold py-4">Update a Soup (PUT)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-scroll'>
+                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto'>
   {`fetch('https://cloud-app.soupabase.workers.dev/soup/1', {
     method: 'PUT',
     headers: {
@@ -148,7 +148,7 @@ export default function DocExamples() {
                 hx-swap="innerHTML"
                 hx-target="#delete-soup"
                 >Get response</button>
-                <code id="delete-soup" class="block whitespace-pre-wrap max-h-48 overflow-scroll p-8"></code>
+                <code id="delete-soup" class="block whitespace-pre-wrap max-h-48 overflow-auto p-8"></code>
             </div>
             {/*}
             <div class="mt-8">

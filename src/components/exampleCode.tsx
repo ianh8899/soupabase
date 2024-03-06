@@ -2,7 +2,7 @@ export default function ExampleCode() {
     return (
         <section class="mt-20">
             <h3 class="text-lg font-bold py-4">Example Code</h3>
-            <div class='bg-neutral-100 p-8 rounded mb-4 overflow-scroll'>
+            <div class='bg-neutral-100 p-8 rounded mb-4 overflow-auto'>
                 <p>{`fetch('https://cloud-app.soupabase.workers.dev/soup/1')`}</p>
                 <p>{`    .then(res=>res.json())`}</p>
                 <p>{`    .then(json=>console.log(json))`}</p>
