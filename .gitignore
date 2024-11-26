@@ -4,6 +4,8 @@ dist
 .dev.vars
 .env
 .DS_Store
+/src/.DS_Store
+wrangler.toml
 
 # Change them to your taste:
 package-lock.json
