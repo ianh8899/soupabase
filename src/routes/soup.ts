@@ -1,16 +1,17 @@
-import { Hono } from 'hono'
-import { createClient } from '@supabase/supabase-js'
+import { Hono } from "hono";
+import { createClient } from "@supabase/supabase-js";
+import { Env } from "../types";
 
-const supabaseUrl = env.SUPABASE_URL;
-const supabaseKey = env.SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey)
+const app = new Hono<{ Bindings: Env }>();
 
-const app = new Hono()
+app.get("/", async (c) => {
+  const supabaseUrl = c.env.SUPABASE_URL; // Access environment variables through context
+  const supabaseKey = c.env.SUPABASE_KEY;
+  const supabase = createClient(supabaseUrl, supabaseKey);
 
-app.get('/', async (c) => {
   const queryParams = c.req.query();
   const limit = queryParams.limit ? parseInt(queryParams.limit) : null;
-  let query = supabase.from('Soups').select('*');
+  let query = supabase.from("Soups").select("*");
 
   if (limit) {
     query = query.limit(limit);
@@ -21,53 +22,74 @@ app.get('/', async (c) => {
   if (error) throw error;
 
   return c.json(soups);
-})
+});
 
-app.get('/:id', async (c) => {
-    const id = c.req.param('id');
-    const { data: soup, error } = await supabase
-      .from('Soups')
-      .select('*')
-      .eq('id', id)
-      .single()
-  
-    if (error) throw error
-  
-    return c.json(soup)
-  })
+app.get("/:id", async (c) => {
+  const supabaseUrl = c.env.SUPABASE_URL; // Access environment variables through context
+  const supabaseKey = c.env.SUPABASE_KEY;
+  const supabase = createClient(supabaseUrl, supabaseKey);
 
-  
-  app.get('/category/all', async (c) => {
-    const { data: soups, error } = await supabase
-      .from('Soups')
-      .select('category')
-  
-    if (error) throw error
-  
-    const categoryNames = [...new Set(soups.map(soup => soup.category))];
-  
-    return c.json(categoryNames)
-  })
+  const id = c.req.param("id");
+  const { data: soup, error } = await supabase
+    .from("Soups")
+    .select("*")
+    .eq("id", id)
+    .single();
 
-  app.get('/category/:category', async (c) => {
-    const category = c.req.param('category');
-    const { data: soups, error } = await supabase
-      .from('Soups')
-      .select('*')
-      .eq('category', category)
-  
-    if (error) throw error
-  
-    return c.json(soups)
-  })
+  if (error) throw error;
 
-app.post('/', async (c) => {
-  const { name, price, ingredients, hot, description, imgUrl, origin, category, nullValue } = await c.req.json();
+  return c.json(soup);
+});
+
+app.get("/category/all", async (c) => {
+  const supabaseUrl = c.env.SUPABASE_URL; // Access environment variables through context
+  const supabaseKey = c.env.SUPABASE_KEY;
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  const { data: soups, error } = await supabase
+    .from("Soups")
+    .select("category");
+
+  if (error) throw error;
+
+  const categoryNames = [...new Set(soups.map((soup) => soup.category))];
+
+  return c.json(categoryNames);
+});
+
+app.get("/category/:category", async (c) => {
+  const supabaseUrl = c.env.SUPABASE_URL; // Access environment variables through context
+  const supabaseKey = c.env.SUPABASE_KEY;
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  const category = c.req.param("category");
+  const { data: soups, error } = await supabase
+    .from("Soups")
+    .select("*")
+    .eq("category", category);
+
+  if (error) throw error;
+
+  return c.json(soups);
+});
+
+app.post("/", async (c) => {
+  const {
+    name,
+    price,
+    ingredients,
+    hot,
+    description,
+    imgUrl,
+    origin,
+    category,
+    nullValue,
+  } = await c.req.json();
 
   // Validate name and price
   if (!name || !price) {
     c.status(400);
-    return c.text('Name and price are required');
+    return c.text("Name and price are required");
   }
 
   // Create a new soup with all properties
@@ -81,22 +103,31 @@ app.post('/', async (c) => {
     imgUrl,
     origin,
     category,
-    nullValue
+    nullValue,
   };
 
   // Return the new soup with a 200 status code
   c.status(200);
-  return c.json({ message: 'New soup created!', soup: newSoup });
+  return c.json({ message: "New soup created!", soup: newSoup });
 });
 
-app.post('/formdata', async (c) => {
+app.post("/formdata", async (c) => {
   const body = await c.req.parseBody();
-  const { name, price, ingredients, hot, description, imgUrl, origin, category } = body;
+  const {
+    name,
+    price,
+    ingredients,
+    hot,
+    description,
+    imgUrl,
+    origin,
+    category,
+  } = body;
 
   // Validate name and price
   if (!name || !price) {
     c.status(400);
-    return c.text('Name and price are required');
+    return c.text("Name and price are required");
   }
 
   // Create a new soup with all properties
@@ -110,17 +141,27 @@ app.post('/formdata', async (c) => {
     imgUrl: imgUrl || null,
     origin: origin || null,
     category: category || null,
-    nullValue: null
+    nullValue: null,
   };
 
   // Return the new soup with a 200 status code and a message
   c.status(200);
-  return c.json({ message: 'New soup created!', soup: newSoup });
+  return c.json({ message: "New soup created!", soup: newSoup });
 });
 
-app.patch('/:id', async (c) => {
-  const id = c.req.param('id');
-  const { name, price, ingredients, hot, description, imgUrl, origin, category, nullValue } = await c.req.json();
+app.patch("/:id", async (c) => {
+  const id = c.req.param("id");
+  const {
+    name,
+    price,
+    ingredients,
+    hot,
+    description,
+    imgUrl,
+    origin,
+    category,
+    nullValue,
+  } = await c.req.json();
 
   // Update the soup with new properties
   const updatedSoup = {
@@ -133,17 +174,27 @@ app.patch('/:id', async (c) => {
     imgUrl,
     origin,
     category,
-    nullValue
+    nullValue,
   };
 
   // Return the updated soup with a 200 status code
   c.status(200);
-  return c.json({ message: 'Soup updated!', soup: updatedSoup });
+  return c.json({ message: "Soup updated!", soup: updatedSoup });
 });
 
-app.put('/:id', async (c) => {
-  const id = c.req.param('id');
-  const { name, price, ingredients, hot, description, imgUrl, origin, category, nullValue } = await c.req.json();
+app.put("/:id", async (c) => {
+  const id = c.req.param("id");
+  const {
+    name,
+    price,
+    ingredients,
+    hot,
+    description,
+    imgUrl,
+    origin,
+    category,
+    nullValue,
+  } = await c.req.json();
 
   // Update the soup with new properties
   const updatedSoup = {
@@ -156,18 +207,18 @@ app.put('/:id', async (c) => {
     imgUrl,
     origin,
     category,
-    nullValue
+    nullValue,
   };
 
   // Return the updated soup with a 200 status code
   c.status(200);
-  return c.json({ message: 'Soup updated!', soup: updatedSoup });
+  return c.json({ message: "Soup updated!", soup: updatedSoup });
 });
 
-app.delete('/:id', async (c) => {
-  const id = c.req.param('id');
+app.delete("/:id", async (c) => {
+  const id = c.req.param("id");
 
-  return c.json({ message: `Soup ${id} deleted!` })
-})
+  return c.json({ message: `Soup ${id} deleted!` });
+});
 
-export default app
+export default app;
