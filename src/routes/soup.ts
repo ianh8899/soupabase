@@ -6,7 +6,7 @@ const app = new Hono<{ Bindings: Env }>();
 
 app.get("/", async (c) => {
   const supabaseUrl = c.env.SUPABASE_URL; // Access environment variables through context
-  const supabaseKey = c.env.SUPABASE_KEY;
+  const supabaseKey = c.env.SUPABASE_ANON_KEY;
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   const queryParams = c.req.query();
@@ -26,7 +26,7 @@ app.get("/", async (c) => {
 
 app.get("/:id", async (c) => {
   const supabaseUrl = c.env.SUPABASE_URL; // Access environment variables through context
-  const supabaseKey = c.env.SUPABASE_KEY;
+  const supabaseKey = c.env.SUPABASE_ANON_KEY;
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   const id = c.req.param("id");
@@ -43,7 +43,7 @@ app.get("/:id", async (c) => {
 
 app.get("/category/all", async (c) => {
   const supabaseUrl = c.env.SUPABASE_URL; // Access environment variables through context
-  const supabaseKey = c.env.SUPABASE_KEY;
+  const supabaseKey = c.env.SUPABASE_ANON_KEY;
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   const { data: soups, error } = await supabase
@@ -59,7 +59,7 @@ app.get("/category/all", async (c) => {
 
 app.get("/category/:category", async (c) => {
   const supabaseUrl = c.env.SUPABASE_URL; // Access environment variables through context
-  const supabaseKey = c.env.SUPABASE_KEY;
+  const supabaseKey = c.env.SUPABASE_ANON_KEY;
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   const category = c.req.param("category");
