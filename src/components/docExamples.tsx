@@ -1,52 +1,72 @@
 export default function DocExamples() {
-    return (
-        <section>
-            <div class="mt-10">
-                <h3 class="text-lg font-bold py-4">Fetch all soups (GET)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto'>
-                {`fetch('https://cloud-app.soupabase.workers.dev/soup')
+  return (
+    <section>
+      <div class="mt-10">
+        <h3 class="text-lg font-bold py-4">Fetch all soups (GET)</h3>
+        <div class="bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto">
+          {`fetch('https://soupabase.com/soup')
     .then(res => res.json())
     .then(json => console.log(json))`}
-                </div>
-            <button class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
-                hx-get="/soup"
-                hx-swap="innerHTML"
-                hx-target="#all-soup"
-                >Get response</button>
-                <code id="all-soup" class="block whitespace-pre-wrap max-h-48 overflow-auto p-8"></code>
-            </div>
-            <div class="mt-8">
-                <h3 class="text-lg font-bold py-4">Fetch all soups with a limit parameter (GET)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto'>
-                {`fetch('https://cloud-app.soupabase.workers.dev/soup?limit=2')
+        </div>
+        <button
+          class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
+          hx-get="/soup"
+          hx-swap="innerHTML"
+          hx-target="#all-soup"
+        >
+          Get response
+        </button>
+        <code
+          id="all-soup"
+          class="block whitespace-pre-wrap max-h-48 overflow-auto p-8"
+        ></code>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-lg font-bold py-4">
+          Fetch all soups with a limit parameter (GET)
+        </h3>
+        <div class="bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto">
+          {`fetch('https://soupabase.com/soup?limit=2')
     .then(res => res.json())
     .then(json => console.log(json))`}
-                </div>
-            <button class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
-                hx-get="/soup?limit=2"
-                hx-swap="innerHTML"
-                hx-target="#limit-soup"
-                >Get response</button>
-                <code id="limit-soup" class="block whitespace-pre-wrap max-h-48 overflow-auto p-8"></code>
-            </div>
-            <div class="mt-8">
-                <h3 class="text-lg font-bold py-4">Fetch soup by Id (GET)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto'>
-                {`fetch('https://cloud-app.soupabase.workers.dev/soup/1')
+        </div>
+        <button
+          class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
+          hx-get="/soup?limit=2"
+          hx-swap="innerHTML"
+          hx-target="#limit-soup"
+        >
+          Get response
+        </button>
+        <code
+          id="limit-soup"
+          class="block whitespace-pre-wrap max-h-48 overflow-auto p-8"
+        ></code>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-lg font-bold py-4">Fetch soup by Id (GET)</h3>
+        <div class="bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto">
+          {`fetch('https://soupabase.com/soup/1')
     .then(res => res.json())
     .then(json => console.log(json))`}
-                </div>
-            <button class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
-                hx-get="/soup/1"
-                hx-swap="innerHTML"
-                hx-target="#one-soup"
-                >Get response</button>
-                <code id="one-soup" class="block whitespace-pre-wrap max-h-48 overflow-auto p-8"></code>
-            </div>
-            <div class="mt-8">
-                <h3 class="text-lg font-bold py-4">Create a Soup (POST)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto'>
-                {`fetch('https://cloud-app.soupabase.workers.dev/soup', {
+        </div>
+        <button
+          class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
+          hx-get="/soup/1"
+          hx-swap="innerHTML"
+          hx-target="#one-soup"
+        >
+          Get response
+        </button>
+        <code
+          id="one-soup"
+          class="block whitespace-pre-wrap max-h-48 overflow-auto p-8"
+        ></code>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-lg font-bold py-4">Create a Soup (POST)</h3>
+        <div class="bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto">
+          {`fetch('https://soupabase.com/soup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -64,18 +84,21 @@ export default function DocExamples() {
   })
   .then(res => res.json())
   .then(json => console.log(json))`}
-                </div>
-                <button class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
-                    hx-get="/example/post"
-                    hx-swap="innerHTML"
-                    hx-target="#post-soup"
-                >Get Response</button>
-                <code id="post-soup" class=""></code>
-            </div>
-            <div class="mt-8">
-                <h3 class="text-lg font-bold py-4">Update a Soup (PATCH)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto'>
-  {`fetch('https://cloud-app.soupabase.workers.dev/soup/1', {
+        </div>
+        <button
+          class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
+          hx-get="/example/post"
+          hx-swap="innerHTML"
+          hx-target="#post-soup"
+        >
+          Get Response
+        </button>
+        <code id="post-soup" class=""></code>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-lg font-bold py-4">Update a Soup (PATCH)</h3>
+        <div class="bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto">
+          {`fetch('https://soupabase.com/soup/1', {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -95,18 +118,21 @@ export default function DocExamples() {
   })
   .then(res => res.json())
   .then(json => console.log(json))`}
-</div>
-                <button class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
-                    hx-get="/example/patch"
-                    hx-swap="innerHTML"
-                    hx-target="#patch-soup"
-                >Get Response</button>
-                <code id="patch-soup" class=""></code>
-            </div>
-            <div class="mt-8">
-                <h3 class="text-lg font-bold py-4">Update a Soup (PUT)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto'>
-  {`fetch('https://cloud-app.soupabase.workers.dev/soup/1', {
+        </div>
+        <button
+          class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
+          hx-get="/example/patch"
+          hx-swap="innerHTML"
+          hx-target="#patch-soup"
+        >
+          Get Response
+        </button>
+        <code id="patch-soup" class=""></code>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-lg font-bold py-4">Update a Soup (PUT)</h3>
+        <div class="bg-neutral-100 p-8 rounded mb-4 whitespace-pre overflow-auto">
+          {`fetch('https://soupabase.com/soup/1', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -126,31 +152,40 @@ export default function DocExamples() {
   })
   .then(res => res.json())
   .then(json => console.log(json))`}
-</div>
-                <button class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
-                    hx-get="/example/put"
-                    hx-swap="innerHTML"
-                    hx-target="#put-soup"
-                >Get Response</button>
-                <code id="put-soup" class=""></code>
-            </div>
-            <div class="mt-20">
-                <h3 class="text-lg font-bold py-4">Delete a Soup (DELETE)</h3>
-                <div class='bg-neutral-100 p-8 rounded mb-4 whitespace-pre'>
-  {`fetch('https://cloud-app.soupabase.workers.dev/soup/1', {
+        </div>
+        <button
+          class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
+          hx-get="/example/put"
+          hx-swap="innerHTML"
+          hx-target="#put-soup"
+        >
+          Get Response
+        </button>
+        <code id="put-soup" class=""></code>
+      </div>
+      <div class="mt-20">
+        <h3 class="text-lg font-bold py-4">Delete a Soup (DELETE)</h3>
+        <div class="bg-neutral-100 p-8 rounded mb-4 whitespace-pre">
+          {`fetch('https://soupabase.com/soup/1', {
     method: 'DELETE',
   })
   .then(res => res.json())
   .then(json => console.log(json))`}
-</div>
-            <button class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
-                hx-delete="/soup/1"
-                hx-swap="innerHTML"
-                hx-target="#delete-soup"
-                >Get response</button>
-                <code id="delete-soup" class="block whitespace-pre-wrap max-h-48 overflow-auto p-8"></code>
-            </div>
-            {/*}
+        </div>
+        <button
+          class="bg-green-800 text-white hover:bg-green-900 px-4 py-2 text-center rounded mb-4"
+          hx-delete="/soup/1"
+          hx-swap="innerHTML"
+          hx-target="#delete-soup"
+        >
+          Get response
+        </button>
+        <code
+          id="delete-soup"
+          class="block whitespace-pre-wrap max-h-48 overflow-auto p-8"
+        ></code>
+      </div>
+      {/*}
             <div class="mt-8">
                 <h3 class="text-lg font-bold py-4">Create a new soup using form data</h3>
                 <div class='bg-neutral-100 p-8 rounded mb-4'>
@@ -226,6 +261,6 @@ export default function DocExamples() {
                 <code id="new-soup" class="block whitespace-pre-wrap max-h-48 overflow-scroll p-8"></code>
             </div>
             */}
-        </section>
-    )
+    </section>
+  );
 }
